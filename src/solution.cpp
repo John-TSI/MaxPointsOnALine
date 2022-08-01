@@ -5,7 +5,7 @@
 int Solution::maxPoints(std::vector<std::vector<int>>& points)
 {
     std::vector<std::pair<int,int>> params;  // will hold gradient and y-intercept for lines connecting each pair of points
-    for(int i{0}; i<points.size(); ++i)
+    for(int i{0}; i<points.size()-1; ++i)
     {
         for(int j{i+1}; j<points.size(); ++j)
         {
@@ -19,7 +19,7 @@ int Solution::maxPoints(std::vector<std::vector<int>>& points)
     int maxCount{0};
     for(auto vals : params)
     {
-        int thisCount = std::count(params.begin(), params.end(),vals); 
+        int thisCount = std::count(params.begin(), params.end(), vals); 
         if(thisCount > maxCount){ maxCount = thisCount; }
     }
     return maxCount;
